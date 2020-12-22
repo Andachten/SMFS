@@ -25,7 +25,7 @@ data_transforms = {
         transforms.ToTensor(),
         transforms.RandomRotation(20),
         transforms.RandomVerticalFlip(p=0.3),
-        transforms.ColorJitter(saturation=0.5),
+        transforms.ColorJitter(saturation=0.5,contrast=1,brightness=0.5,hue=0.1),
         transforms.ColorJitter(contrast=1),
         transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
     ]),
@@ -179,7 +179,7 @@ criterion = nn.CrossEntropyLoss()
 #optimizer_ft = optim.SGD(model_ft.parameters(), lr=0.001, momentum=0.9)
 optimizer_ft=torch.optim.RMSprop(model_ft.parameters(),lr=0.001,alpha=0.9)
 # Decay LR by a factor of 0.1 every 7 epochs
-exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=10, gamma=0.5)
+exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=15, gamma=0.5)
 
 model_ft = train_model(model_ft, criterion, optimizer_ft, exp_lr_scheduler,
                        num_epochs=60)
