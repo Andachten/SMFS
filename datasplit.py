@@ -1,7 +1,7 @@
 import os
 import random
 import shutil
-data_src = r'G:\fingerprintPro\20201211TRAINDATA'
+data_src = r'E:\ZB\cell\20200929-ACE2-RBD\output\img'
 data_to = r'data'
 trainset = 0.8
 evalset = 1-trainset

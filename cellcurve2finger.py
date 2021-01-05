@@ -247,7 +247,7 @@ while True:
         else:
             ms = 'None'
         window['-MULTILINE-'].update(ms)
-    window['-INDEX-'].update(str(index))
+    window['-INDEX-'].update(str(index+1))
     window['-A-'].update(str(a))
     window['-B-'].update(str(b))
     window['-C-'].update(str(c))

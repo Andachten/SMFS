@@ -162,7 +162,7 @@ inputs, classes = next(iter(dataloaders['train']))
 # Make a grid from batch
 out = torchvision.utils.make_grid(inputs)
 
-imshow(out, title=[class_names[x] for x in classes])
+#imshow(out, title=[class_names[x] for x in classes])
 
 model_ft = models.mobilenet_v2(pretrained=True)
 #num_ftrs = model_ft.fc.in_features
@@ -176,11 +176,12 @@ criterion = nn.CrossEntropyLoss()
 
 # Observe that all parameters are being optimized
 #change the optim
-#optimizer_ft = optim.SGD(model_ft.parameters(), lr=0.001, momentum=0.9)
-optimizer_ft=torch.optim.RMSprop(model_ft.parameters(),lr=0.001,alpha=0.9)
+optimizer_ft = optim.SGD(model_ft.parameters(), lr=0.001, momentum=0.9)
+#optimizer_ft=torch.optim.RMSprop(model_ft.parameters(),lr=0.001,alpha=0.9)
 # Decay LR by a factor of 0.1 every 7 epochs
 exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=15, gamma=0.5)
 
 model_ft = train_model(model_ft, criterion, optimizer_ft, exp_lr_scheduler,
                        num_epochs=60)
-visualize_model(model_ft)
+#visualize_model(model_ft)
+torch.save(model_ft,r'model.pkl')
